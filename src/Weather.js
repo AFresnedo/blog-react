@@ -10,7 +10,8 @@ class Weather extends Component {
   }
 
   handleZip = (e) => {
-    console.log(e.target.value);
+    this.state.zip = e.target.value;
+    console.log(this.state.zip);
   }
 
   render() {
