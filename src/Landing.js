@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Weather from './Weather';
 
 class Landing extends Component {
 
@@ -6,6 +7,7 @@ class Landing extends Component {
     super(props);
     this.state = {
       quote: ""
+      zip: 0
     };
   }
 
@@ -21,14 +23,14 @@ class Landing extends Component {
 
     const poemApi = 'http://ShakeItSpeare.com/api/poem';
     fetch(poemApi)
-    .then( (toParse) => toParse.json())
-    .then( (parsed) => {
-      console.log(base === letBase && letBase === this && this === constBase);
-      base.setState({ quote: parsed });
-      console.log('parsed data:', parsed);
-    }).catch(function(err) {
-      console.log('err fetching shakespeare quote:', err);
-    });
+      .then( (toParse) => toParse.json())
+      .then( (parsed) => {
+        console.log(base === letBase && letBase === this && this === constBase);
+        base.setState({ quote: parsed });
+        console.log('parsed data:', parsed);
+      }).catch(function(err) {
+        console.log('err fetching shakespeare quote:', err);
+      });
   }
 
   //
@@ -41,16 +43,20 @@ class Landing extends Component {
     if (poetry) {
       return (
         <div>
-        <h1>Shakespeare:</h1>
-        { poetry.poem }
+          <h1>Shakespeare:</h1>
+          { poetry.poem }
+          <hr />
+          <Weather />
         </div>
       );
     }
     else {
       return (
         <div>
-        <h1>Shakespeare:</h1>
-        Loading...
+          <h1>Shakespeare:</h1>
+          Loading...
+          <hr />
+          <Weather />
         </div>
       );
     }
