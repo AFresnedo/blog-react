@@ -16,20 +16,10 @@ class Landing extends Component {
   //
   componentDidMount() {
 
-    // TODO determine proper scoping for this
-    var base = this;
-    let letBase = this;
-    const constBase = this;
-
     const poemApi = 'http://ShakeItSpeare.com/api/poem';
     fetch(poemApi)
       .then( (toParse) => toParse.json())
       .then( (parsed) => {
-        // this is equal here
-        console.log('THISs are still equal:',
-          base === letBase && letBase === this && this === constBase);
-        // call another lambda from within this lambda
-        this.calledFromlevelTwo(constBase);
         base.setState({ quote: parsed });
         console.log('parsed data:', parsed);
       }).catch(function(err) {
@@ -40,10 +30,6 @@ class Landing extends Component {
   //
   // javascript helpers go here, incl. stuff like iterating through props
   //
-  calledFromlevelTwo = (toCompare) => {
-    console.log('called THISs are equal',
-      this === toCompare);
-  }
 
   render() {
 
