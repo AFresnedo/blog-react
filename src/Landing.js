@@ -20,7 +20,7 @@ class Landing extends Component {
     fetch(poemApi)
       .then( (toParse) => toParse.json())
       .then( (parsed) => {
-        base.setState({ quote: parsed });
+        this.setState({ quote: parsed });
         console.log('parsed data:', parsed);
       }).catch(function(err) {
         console.log('err fetching shakespeare quote:', err);
